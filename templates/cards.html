@@ -1,0 +1,54 @@
+<!doctype html>
+<head>
+    <style>
+    table, th, td {
+      border: 1px solid black;
+    }
+    
+    th, td {
+      padding: 10px;
+    }
+    </style>
+</head>
+{% for cards in new_cards %}
+{% for card in cards %}
+<table style="width:100%">
+    <tr>
+        <th>id</th>
+        <th>Name</th>
+        <th>type</th>
+        <th>image</th>
+        <th>Rarity</th>
+        <th>Class</th>
+        <th>Set</th>
+
+    </tr>
+    <tr>
+        <td>{{card['id']}}</td>
+        <td>{{card['name']}}</td>
+{% for type in metadata_type %}
+
+{% if type['id'] == card['cardTypeId'] %}
+        <td>{{type['name']}}</td>
+{% endif %}
+
+{% endfor %}
+        <td><img src={{card['image']}}></td>
+        <td>Legendary</td>
+{%for class in metadata_classes %}
+{% if class['id'] == card['classId']%}
+               <td>{{class['name']}}</td>
+{% endif %}
+{% endfor%}
+{% for data in metadata_sets %}
+{% if data['id'] == card['cardSetId'] %}
+        <td>{{data['name']}}</td>
+{% endif %}
+
+{% endfor %}
+
+    </tr>
+</table>
+{% endfor %}
+{% endfor %}
+
