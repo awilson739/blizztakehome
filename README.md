@@ -1,6 +1,7 @@
 # blizztakehome
 
 ## Requirements
+1. Python3
 1. Battle.net account
 1. API Client ID and Secret 
 ## Installation
